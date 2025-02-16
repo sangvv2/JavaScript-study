@@ -1,0 +1,82 @@
+body{
+  background-size: cover;
+  height: 100vh;
+  display: flex; /*모든 요소를 가로로 둔다.*/
+  flex-direction: column;/*가로로 정렬된 요소를 세로로 바꾼다.*/
+  justify-content: center;/*세로에서 중앙으로 오게 만든다.*/
+  align-items: center;
+  background-image: url(물음표바탕.jpg);/*출처 freepik</a>*/
+
+}
+
+.container{
+  border: 10px solid white;
+  border-radius: 20px;
+  text-align: center;
+  background-color: rgba(247, 243, 242, 0.7);
+}
+
+.pre-title {
+  font-size: 5vw;
+  font-weight: bold;
+  color: darkblue;
+}
+
+.title {
+  font-size: 6vw;
+  font-weight: bold;
+}
+
+.sub-title {
+  font-size: 5vw;
+  font-weight: bold;
+}
+
+.hint{
+  font-size: 4vw;
+}
+
+.yellow-text{
+  color: yellowgreen;
+}
+
+.main-img{
+  width: 20vw;
+  height: 20vh
+}
+
+.form-control{
+  height: 40px;
+  font-size: 3vw;
+  text-align: center;
+}
+
+@media screen and (max-width:48rem) {
+  .pre-title {
+    font-size: 8vw;
+  }
+  .title {
+    font-size: 10vw;
+  }
+  .sub-title {
+    font-size: 9vw;
+  }
+
+  .break-text {
+    display: block; /* 업 & 다운이 줄바꿈됨 */
+  }
+
+  .hint{
+    font-size: 7vw;
+  }
+  .main-img {
+    width: 40vw;
+  }
+
+  .form-control {
+    font-size: 8vw;
+    max-width: 500px;
+    margin-right: 0px;
+  }
+
+}
