@@ -47,9 +47,16 @@ body{
 
 .form-control{
   height: 40px;
-  font-size: 3vw;
+  font-size: 2vw;
   text-align: center;
 }
+
+#result-area {
+  font-size: 5vw;
+  font-weight: bold; 
+  color: blue; 
+}
+
 
 @media screen and (max-width:48rem) {
   .pre-title {
@@ -60,6 +67,12 @@ body{
   }
   .sub-title {
     font-size: 9vw;
+  }
+
+  #result-area {
+    font-size: 9vw;
+    font-weight: bold; 
+    color: blue; 
   }
 
   .break-text {
