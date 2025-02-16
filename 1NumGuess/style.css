@@ -52,7 +52,7 @@ body{
 }
 
 #result-area {
-  font-size: 5vw;
+  font-size: 4vw;
   font-weight: bold; 
   color: blue; 
 }
@@ -70,7 +70,7 @@ body{
   }
 
   #result-area {
-    font-size: 9vw;
+    font-size: 7vw;
     font-weight: bold; 
     color: blue; 
   }
