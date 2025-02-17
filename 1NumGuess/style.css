@@ -10,6 +10,7 @@ body{
 }
 
 .container{
+  width: 70%;
   border: 10px solid white;
   border-radius: 20px;
   text-align: center;
@@ -17,31 +18,31 @@ body{
 }
 
 .pre-title {
-  font-size: 5vw;
+  font-size: 3vw;
   font-weight: bold;
   color: darkblue;
 }
 
 .title {
-  font-size: 6vw;
+  font-size: 4vw;
   font-weight: bold;
 }
 
 .sub-title {
-  font-size: 5vw;
+  font-size: 3vw;
   font-weight: bold;
 }
 
 .hint{
-  font-size: 4vw;
+  font-size: 3vw;
 }
 
 .yellow-text{
   color: yellowgreen;
 }
 
-.main-img{
-  width: 20vw;
+.sub-img{
+  width: 15vw;
   height: 20vh
 }
 
@@ -59,14 +60,17 @@ body{
 
 
 @media screen and (max-width:48rem) {
+  .container{
+    width: 85%;
+  }
   .pre-title {
-    font-size: 8vw;
+    font-size: 6vw;
   }
   .title {
-    font-size: 10vw;
+    font-size: 8vw;
   }
   .sub-title {
-    font-size: 9vw;
+    font-size: 7vw;
   }
 
   #result-area {
@@ -82,7 +86,7 @@ body{
   .hint{
     font-size: 7vw;
   }
-  .main-img {
+  .sub-img {
     width: 40vw;
   }
 
