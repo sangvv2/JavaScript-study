@@ -46,7 +46,6 @@ function play(){
   console.log("chance", chances);
 
   if(userValue < computerNum){
-    subImg.src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmxta3E5NzA1bXdza3ExNHpqNTM3eTlqcjduOXV3c3FkZmgzeWphcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/zihFgY0dbmlB6UOzpi/giphy.gif"
     resultArea.textContent = "UP!!"
   }
   else if (userValue > computerNum){
