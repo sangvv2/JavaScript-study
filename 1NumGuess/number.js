@@ -32,9 +32,6 @@ function pickRandomNum(){
 function play(){
   let userValue = userInput.value;
 
-  chances = 3;
-  chanceArea.innerHTML = `남은 기회:${chances}`;
-
   if(userValue<1 || userValue>100){
     resultArea.textContent = "1과 100사이 숫자를 입력해 주세요";
     return;
