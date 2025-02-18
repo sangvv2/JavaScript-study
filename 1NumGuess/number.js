@@ -32,7 +32,10 @@ function pickRandomNum(){
 function play(){
   let userValue = userInput.value;
 
-  if(userValue<1 || userValue>1000){
+  chances = 3;
+  chanceArea.innerHTML = `남은 기회:${chances}`;
+
+  if(userValue<1 || userValue>100){
     resultArea.textContent = "1과 100사이 숫자를 입력해 주세요";
     return;
   }
@@ -74,7 +77,11 @@ function reset(){
   //새로운 번호가 생성되고
   pickRandomNum();
 
-  resultArea.textContent = "어떤 숫자일까요?"
+  playButton.disabled = false;
+  chances = 3;
+  chanceArea.innerHTML = `남은 기회:${chances}`;
+
+  resultArea.textContent = "어떤 숫자일까요?";
 }
 
 pickRandomNum();
