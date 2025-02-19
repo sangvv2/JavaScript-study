@@ -87,9 +87,16 @@ function toggleComplete(id){
 
 function deleteTask(id){
   taskList = taskList.filter(task => task.id !== id);
-  render();
   //filter()은 주어진 조건을 만족하는 요소만 남겨서 새로운 배열을 생성합니다.
   //즉,  조건을 만족하지 않는 요소는 결과 배열에서 제외됨
+
+  if (mode === "ongoing") {
+    filterList = taskList.filter(task => !task.isComplete); // 진행 중인 목록 업데이트(각 탭에서도 바로 삭제 가능한 코드)
+  } else if (mode === "done") {
+    filterList = taskList.filter(task => task.isComplete); // 완료된 목록 업데이트
+  }
+  render();
+
   
   /*splice이용하는 방법
   for(let i = 0; i<taskList.length; i++){
