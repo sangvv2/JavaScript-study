@@ -47,6 +47,7 @@ function render(){
   let list = []
   if(mode === "all"){
     list = [...taskList].sort((a, b) => a.isComplete - b.isComplete);
+    //전체 일정에서 "진행중 → 완료" 순서로 정렬하는 코드
   }else if(mode === "ongoing" || mode === "done"){
     list = filterList;
   }
