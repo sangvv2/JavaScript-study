@@ -75,3 +75,11 @@ body{
   border-bottom: 1px solid lightgray;
 }
 
+
+.task-done{
+  text-decoration: line-through;
+}
+
+.task-tabs div{
+  cursor: pointer;
+}
