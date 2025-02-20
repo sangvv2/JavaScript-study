@@ -30,7 +30,21 @@ taskInput.addEventListener("focus", function () {
   this.value = ""; // 클릭하면 기존 입력값 삭제
 });
 
+
+//엔터키 눌렀을 때 +버튼과 동일하게 일정 추가
+taskInput.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+      addTask();
+  }
+});
+
+
 function addTask(){
+  if (taskInput.value.trim() === "") {
+    taskInput.focus();
+    return;
+  }
+
   let task = {
     id:randomIDGenerate(),
     taskContent: taskInput.value,
@@ -39,6 +53,9 @@ function addTask(){
   taskList.push(task);
   console.log(taskList);
   render();
+
+  taskInput.value = "";
+  taskInput.focus();
 }
 
 function render(){
@@ -87,6 +104,16 @@ function toggleComplete(id){
 
 
 function deleteTask(id){
+  let confirmDelete = confirm("정말로 삭제하시겠습니까?"); 
+
+    if (!confirmDelete) {
+        return; // "취소"를 누르면 삭제하지 않음
+    }
+
+    taskList = taskList.filter(task => task.id !== id); // 해당 ID를 제외한 리스트 정렬
+    render();
+
+
   taskList = taskList.filter(task => task.id !== id);
   //filter()은 주어진 조건을 만족하는 요소만 남겨서 새로운 배열을 생성합니다.
   //즉,  조건을 만족하지 않는 요소는 결과 배열에서 제외됨
