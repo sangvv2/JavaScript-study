@@ -36,7 +36,7 @@ taskInput.addEventListener("keydown", function(event) {
   if (event.key === "Enter") {
       addTask();
   }
-});
+});//keydown: 키보드를 누를 때 발생하는 이벤트
 
 
 function addTask(){
@@ -98,6 +98,19 @@ function toggleComplete(id){
       taskList[i].isComplete = !taskList[i].isComplete;
       break;
     }
+  }
+  //"진행 중"탭에서, 체크버튼을 누르면 완료된 일정 제외후 새 배열
+  if (mode === "ongoing") {
+    filterList = taskList.filter(task => !task.isComplete);
+  } 
+
+   // "일정 완료"탭에서, 진행 중 일정 제외후 새 배열
+  else if (mode === "done") {
+    filterList = taskList.filter(task => task.isComplete);
+  }
+  //"전체일정"탭에서 클릭하면 완료된 일정 제거
+  else if(mode === "all"){
+    filterList = taskList.filter(task => !task.isComplete);
   }
   render();
 }
