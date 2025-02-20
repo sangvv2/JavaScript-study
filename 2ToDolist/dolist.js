@@ -51,6 +51,15 @@ function addTask(){
     isComplete: false
   }
   taskList.push(task);
+
+  if (mode === "ongoing") {
+    filterList = taskList.filter(task => !task.isComplete); // 진행 중인 작업만 보이도록 업데이트
+  } else if (mode === "done") {
+    filterList = taskList.filter(task => task.isComplete);
+  } else {
+    filterList = taskList;
+  }
+
   console.log(taskList);
   render();
 
