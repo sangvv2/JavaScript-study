@@ -10,6 +10,22 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="side-menu">
+    <button class = "X-button"onclick = "toggleMenuX()">X</button>
+    <div class = "side-list">
+      <ul>
+        <li><button>Business</button></li>
+        <li><button>Entertainment</button></li>
+        <li><button>General</button></li>
+        <li><button>Health</button></li>
+        <li><button>Science</button></li>
+        <li><button>Sports</button></li>
+        <li><button>Technology</button></li>
+      </ul>
+    </div>
+  </div>
+
+
   <section class = "container">
     <i class="fa-solid fa-bars hamburger-menu" onclick="toggleMenu()"></i>
 
@@ -17,12 +33,16 @@
       <div>
         <i class="fa-solid fa-magnifying-glass" onclick="toggleSearch()"></i>
       </div>
-      <div >
+      <div class="search-container" >
         <input id = "search-input">
         <button onclick = "getNewsByKeyword()">검색</button>
       </div>
     </nav>
-    
+  
+
+
+
+
     <section>
       <div class = "head-line">
         <svg viewBox="0 0 184 25" fill="#000">
@@ -41,16 +61,7 @@
       </div>
 
       
-      <div class="side-menu">
-        <ul>
-            <li>Business</li>
-            <li>Entertainment</li>
-            <li>General</li>
-            <li>Health</li>
-            <li>Science</li>
-            <li>Sports</li>
-            <li>Technology</li>
-        </ul>
+
 
     </section>
     <section id = "news-board"></section>

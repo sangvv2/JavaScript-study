@@ -1,6 +1,6 @@
 const API_KEY = `5ef9d02cad9949e1af0a1b501925f601`
 let newList = []
-const menus = document.querySelectorAll(".menus button")
+const menus = document.querySelectorAll("category-buttons")
 menus.forEach(menu => menu.addEventListener("click",(event) =>getNewsByCategory(event)))
 
 const getLatestNews = async() => {
@@ -45,6 +45,26 @@ const toggleSearch = () =>{
   }
 }
 
+const toggleMenu = () => {
+  const sideMenu = document.querySelector(".side-menu")
+  console.log("sidemen", sideMenu)
+
+  sideMenu.style.display = "block"
+
+  if (sideMenu.style.left === "0px") {
+      sideMenu.style.left = "-250px"
+  } else {
+      sideMenu.style.left = "0px"
+  }
+}
+
+const toggleMenuX = () => {
+  const sideMenu = document.querySelector(".side-menu");
+  sideMenu.style.left = "-250px"; // 사이드 메뉴를 화면 밖으로 이동
+  setTimeout(() => {
+    sideMenu.style.display = "none"; // 이동 후에 display를 'none'으로 설정하여 완전히 숨김
+  }, 300); // 이동 애니메이션 시간과 동일하게 설정
+}
 
 const render =() =>{
 
