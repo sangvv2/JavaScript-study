@@ -42,3 +42,42 @@
 .news{
   border-bottom: 2px solid black;
 }
+
+
+
+nav{
+  display: flex;
+  align-items: stretch;
+}
+
+i{
+  padding: 7px;
+  cursor: pointer;
+}
+
+.menus{
+  display: flex;
+  list-style: none;
+}
+
+.hamburger-menu{
+  display: none;
+}
+
+.side-menu{
+  display: none;
+}
+
+
+
+@media screen and (max-width:48rem){
+  .menus{
+    display: none;
+  }
+  .hamburger-menu{
+    display: block;
+    display: flex;
+    flex-direction: column;
+  }
+}
+

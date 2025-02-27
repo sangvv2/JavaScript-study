@@ -11,6 +11,18 @@
 </head>
 <body>
   <section class = "container">
+    <i class="fa-solid fa-bars hamburger-menu" onclick="toggleMenu()"></i>
+
+    <nav>
+      <div>
+        <i class="fa-solid fa-magnifying-glass" onclick="toggleSearch()"></i>
+      </div>
+      <div >
+        <input id = "search-input">
+        <button onclick = "getNewsByKeyword()">검색</button>
+      </div>
+    </nav>
+    
     <section>
       <div class = "head-line">
         <svg viewBox="0 0 184 25" fill="#000">
@@ -27,6 +39,19 @@
         <button>Sports</button>
         <button>Technology</button>
       </div>
+
+      
+      <div class="side-menu">
+        <ul>
+            <li>Business</li>
+            <li>Entertainment</li>
+            <li>General</li>
+            <li>Health</li>
+            <li>Science</li>
+            <li>Sports</li>
+            <li>Technology</li>
+        </ul>
+
     </section>
     <section id = "news-board"></section>
   </section>
