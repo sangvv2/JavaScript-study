@@ -51,12 +51,16 @@
 
 
 
-nav{
+nav,
+.mobile-header {
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  justify-content: flex-start; /* 왼쪽 정렬 */
+  padding: 10px;
+  gap: 10px; 
+  width: auto;
 }
-
-i{
+.mobile-header i{
   padding: 7px;
   cursor: pointer;
 }
@@ -83,6 +87,13 @@ i{
   display: none;
 }
 
+.search-ui{
+  border: none;
+  background-color: black;
+  color: white;
+  border-radius: 2px;
+}
+
 
 
 
@@ -91,7 +102,6 @@ i{
     display: none;
   }
   .hamburger-menu{
-    display: block;
     display: flex;
     flex-direction: column;
   }
@@ -128,7 +138,6 @@ i{
     height: 100%;
   }
   .side-list button{
-    order: none;
     background: none;
     margin: 5px;
   }
