@@ -44,8 +44,11 @@ const getNewsByCategory = async (event) => {
 
 
 const getNewsByKeyword = async(event) => {
+  let searchInput = document.getElementById("search-input");
   let keyword = document.getElementById("search-input").value
+  
   console.log("keyword:", keyword)
+
   const url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?page=1&pageSize=20&country=kr&q=${keyword}&apiKey=${API_KEY}`)
   const response = await fetch(url)
   const data = await response.json()
@@ -53,6 +56,8 @@ const getNewsByKeyword = async(event) => {
   console.log("keyword data",data)
   newList = data.articles
   render()
+
+  searchInput.value = ""
 }
 
 const toggleSearch = () =>{
