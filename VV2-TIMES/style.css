@@ -45,6 +45,7 @@
 
 .search-container {
   display: none; 
+  display: flex;
   gap: 10px;
 }
 
@@ -93,6 +94,7 @@ nav,
   color: white;
   border-radius: 2px;
 }
+
 
 
 
@@ -155,5 +157,12 @@ nav,
   }
   .search-container{
     flex-direction: row;
+  }
+  .search-container button{
+    white-space: nowrap;
+  }
+  #search-input,
+  .search-button {
+  height: 27px;
   }
 }
