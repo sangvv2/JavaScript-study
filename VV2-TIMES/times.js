@@ -79,7 +79,6 @@ const toggleSearch = () =>{
   } else {
       searchContainer.style.display = "none"
   }
-  
 }
 
 const toggleMenu = () => {
