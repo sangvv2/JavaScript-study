@@ -88,7 +88,7 @@ nav,
   display: none;
 }
 
-.search-ui{
+.search-button{
   border: none;
   background-color: black;
   color: white;
@@ -163,6 +163,6 @@ nav,
   }
   #search-input,
   .search-button {
-  height: 27px;
+  height: 29px;
   }
 }
