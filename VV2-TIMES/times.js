@@ -5,81 +5,81 @@ const sideMenuButtons = document.querySelectorAll(".side-menu button")
 menus.forEach(menu => menu.addEventListener("click",(event) =>getNewsByCategory(event)))
 sideMenuButtons.forEach(item => item.addEventListener("click",(event) =>getNewsByCategory(event)))
 
+let url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?page=1&pageSize=20&country=kr&apiKey=${API_KEY}`)
+
+const getNews = async() => {
+  try{
+    const response = await fetch(url)
+    const data = await response.json()
+    if(response.status===200){
+        if(data.articles.length === 0){
+          throw new Error("No result for this search")
+        }
+      newList = data.articles
+      render()
+    }else{
+      throw new Error(data.message)
+    }
+
+    
+  }catch(error){
+    errorRender(error.message)
+  }
+}
+
+
 const getLatestNews = async() => {
-  const url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?page=1&pageSize=20&country=kr&apiKey=${API_KEY}`)
-  const response = await fetch(url)
-  const data = await response.json()
-  newList = data.articles
-  render()
-  console.log("ddd",newList)
+  url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?page=1&pageSize=20&country=kr&apiKey=${API_KEY}`)
+  getNews()
 }
 
 
 const getNewsByCategory = async (event) => {
-  const category = event.target.textContent.toLowerCase().trim();
-  console.log("category", category);
+  const category = event.target.textContent.toLowerCase().trim()
 
   // 🔥 유효한 카테고리만 API 요청 (잘못된 요청 방지)
-  const validCategories = ["business", "entertainment", "general", "health", "science", "sports", "technology"];
+  const validCategories = ["business", "entertainment", "general", "health", "science", "sports", "technology"]
   if (!validCategories.includes(category)) return;
 
-  try {
-    const url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?page=1&pageSize=20&country=kr&category=${category}&apiKey=${API_KEY}`);
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log("Data", data);
+  url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?page=1&pageSize=20&country=kr&category=${category}&apiKey=${API_KEY}`)
 
-    // 🔥 데이터가 있을 때만 업데이트 (기존 뉴스 유지)
-    if (data.articles.length > 0) {
-      newList = data.articles;
-    } else {
-      console.warn("⚠️ 데이터 없음 (기존 뉴스 유지)");
-    }
-
-    render(); // 뉴스 화면 갱신
-  } catch (error) {
-    console.error("🚨 뉴스 가져오기 오류:", error);
-  }
+  // ✅ getNews 함수 호출 (에러 처리 포함)
+  getNews()
 };
+
 
 
 const getNewsByKeyword = async(event) => {
   let searchInput = document.getElementById("search-input");
   let keyword = document.getElementById("search-input").value
   
-  console.log("keyword:", keyword)
 
-  const url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?page=1&pageSize=20&country=kr&q=${keyword}&apiKey=${API_KEY}`)
-  const response = await fetch(url)
-  const data = await response.json()
-  
-  console.log("keyword data",data)
-  newList = data.articles
-  render()
+  url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?page=1&pageSize=20&country=kr&q=${keyword}&apiKey=${API_KEY}`)
+  getNews()
 
   searchInput.value = ""
 }
 
 const toggleSearch = () =>{
-  const searchContainer = document.querySelector(".search-container");
+  const searchContainer = document.querySelector(".search-container")
 
   // 검색창이 보이는 상태면 숨기고, 아니면 표시
   if (searchContainer.style.display === "none" || searchContainer.style.display === "") {
-      searchContainer.style.display = "flex";
+      searchContainer.style.display = "flex"
   } else {
-      searchContainer.style.display = "none";
+      searchContainer.style.display = "none"
   }
   
 }
 
 const toggleMenu = () => {
-  const sideMenu = document.querySelector(".side-menu");
+  const sideMenu = document.querySelector(".side-menu")
   sideMenu.style.left = "0";
 };
 
 const toggleMenuX = () => {
-  const sideMenu = document.querySelector(".side-menu");
-  sideMenu.style.left = "-100%";
+  const sideMenu = document.querySelector(".side-menu")
+  sideMenu.style.left = "-100%"
 
 }
 
@@ -109,6 +109,13 @@ const render =() =>{
   
   
   document.getElementById('news-board').innerHTML = newsHTML
+}
+
+const errorRender = (errorMessage) => {
+  const errorHTML = `<div class="alert alert-danger" role="alert">
+  ${errorMessage}
+</div>`
+document.getElementById("news-board").innerHTML = errorHTML
 }
 
 getLatestNews()

@@ -94,6 +94,12 @@ nav,
   border-radius: 2px;
 }
 
+#search-input,
+.search-button {
+  height: 27px;
+}
+
+
 
 
 
