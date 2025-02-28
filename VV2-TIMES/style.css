@@ -96,6 +96,8 @@ nav,
 
 #search-input,
 .search-button {
+  display: flex;
+  align-items: center;
   height: 27px;
 }
 
