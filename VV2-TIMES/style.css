@@ -94,12 +94,6 @@ nav,
   border-radius: 2px;
 }
 
-#search-input,
-.search-button {
-  display: flex;
-  align-items: center;
-  height: 27px;
-}
 
 
 
@@ -159,5 +153,7 @@ nav,
     top: 15px;
     cursor: pointer;
   }
-
+  .search-container{
+    flex-direction: row;
+  }
 }
