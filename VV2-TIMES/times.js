@@ -5,17 +5,15 @@ const sideMenuButtons = document.querySelectorAll(".side-menu button")
 menus.forEach(menu => menu.addEventListener("click",(event) =>getNewsByCategory(event)))
 sideMenuButtons.forEach(item => item.addEventListener("click",(event) =>getNewsByCategory(event)))
 
-let url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?page=1&pageSize=20&country=kr&apiKey=${API_KEY}`)
-let totalResults = 0
-let page = 1
-const pageSize = 10
-const groupSize = 5
+let url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?&country=kr&apiKey=${API_KEY}`)
+let totalResults = 0;
+let page = 1;
+const pageSize = 10;
+const groupSize = 5;
 
 
 const getNews = async() => {
   try{
-    url.searchParams.set("page",page) // -> &page=page
-    url.searchParams.set("pageSize",pageSize)
 
     const response = await fetch(url)
 
@@ -27,7 +25,6 @@ const getNews = async() => {
       newList = data.articles
       totalResults = data.totalResults
       render()
-      pagNationRender()
     }else{
       throw new Error(data.message)
     }
@@ -39,7 +36,7 @@ const getNews = async() => {
 
 
 const getLatestNews = async() => {
-  url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?page=1&pageSize=20&country=kr&apiKey=${API_KEY}`)
+  url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?&country=kr&apiKey=${API_KEY}`)
   getNews()
 }
 
@@ -51,9 +48,9 @@ const getNewsByCategory = async (event) => {
   const validCategories = ["business", "entertainment", "general", "health", "science", "sports", "technology"]
   if (!validCategories.includes(category)) return;
 
-  url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?page=1&pageSize=20&country=kr&category=${category}&apiKey=${API_KEY}`)
+  url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?&country=kr&category=${category}&apiKey=${API_KEY}`)
 
-  // ✅ getNews 함수 호출 (에러 처리 포함)
+  //  getNews 함수 호출 (에러 처리 포함)
   getNews()
 };
 
@@ -64,7 +61,7 @@ const getNewsByKeyword = async(event) => {
   let keyword = document.getElementById("search-input").value
   
 
-  const url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?page=1&pageSize=20&country=kr&q=${keyword}&apiKey=${API_KEY}`)
+  url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?&country=kr&q=${keyword}&apiKey=${API_KEY}`)
   getNews()
 
   searchInput.value = ""
@@ -127,48 +124,43 @@ const errorRender = (errorMessage) => {
 document.getElementById("news-board").innerHTML = errorHTML
 }
 
-const pagNationRender = () => {
-  //totalResult
-  //page
-  //pageSize
-  //groupSize
-  //totalPages
-  const totalPages = Math.ceil(totalResults/pageSize)
-  //pageGroup
-  const pageGroup = Math.ceil(page/groupSize)
-  //lastPage
-  const lastPage = pageGroup * groupSize
-  //마지막 페이지그룹이 그룹사이즈보다 작다? lastPage = totalPage
-  if(lastPage > totalPages){
-    lastPage = totalPages
-  }
+// const pagNationRender = () => {
+//   //totalResult
+//   //page
+//   //pageSize
+//   //groupSize
+//   //totalPages
+//   const totalPages = Math.ceil(totalResults/pageSize)
+//   //pageGroup
+//   const pageGroup = Math.ceil(page/groupSize)
+//   //lastPage
+//   const lastPage = pageGroup * groupSize
+//   //마지막 페이지그룹이 그룹사이즈보다 작다? lastPage = totalPage
+//   if(lastPage > totalPages){
+//     lastPage = totalPages
+//   }
 
-  //firstPage
-  const firstPage = lastPage - (groupSize - 1) <=0? 1 : lastPage - (groupSize - 1)
+//   //firstPage
+//   const firstPage = lastPage - (groupSize - 1) <=0? 1 : lastPage - (groupSize - 1)
 
-  let pagiNationHTML = ``
+//   let pagiNationHTML = ``
 
-  for(let i =firstPage; i <=lastPage; i++){
-    pagiNationHTML += `<li class="page-item ${i === page? "active": ""}" onclick = "moveToPage(${i})"><a class="page-link" >${i}</a></li>`
-  }
-  document.querySelector(".pagination").innerHTML = pagiNationHTML
+//   for(let i =firstPage; i <=lastPage; i++){
+//     pagiNationHTML += `<li class="page-item" onclick = "moveToPage(${i})"><a class="page-link" >${i}</a></li>`
+//   }
+//   document.querySelector(".pagination").innerHTML = pagiNationHTML
 
-  // <nav aria-label="Page navigation example">
-  // <ul class="pagination">
-  //   <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-  //   <li class="page-item"><a class="page-link" href="#">1</a></li>
-  //   <li class="page-item"><a class="page-link" href="#">2</a></li>
-  //   <li class="page-item"><a class="page-link" href="#">3</a></li>
-  //   <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  // </ul>
-  // </nav>
-}
+//   // <nav aria-label="Page navigation example">
+//   // <ul class="pagination">
+//   //   <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+//   //   <li class="page-item"><a class="page-link" href="#">1</a></li>
+//   //   <li class="page-item"><a class="page-link" href="#">2</a></li>
+//   //   <li class="page-item"><a class="page-link" href="#">3</a></li>
+//   //   <li class="page-item"><a class="page-link" href="#">Next</a></li>
+//   // </ul>
+//   // </nav>
+// }
 
-const moveToPage = (pageNum) => {
-  console.log("movePage",pageNum)
-  page = pageNum
-  getNews()
-}
 
 getLatestNews()
 
