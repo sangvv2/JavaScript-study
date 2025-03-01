@@ -94,12 +94,12 @@ nav,
   border-radius: 2px;
 }
 
+
+/* pageNation css */
 .nav-center{
   display: flex;
   justify-content: center;
 }
-
-
 .page-item {
   margin: 0 5px;
 }
@@ -114,26 +114,26 @@ nav,
   transition: all 0.3s ease;
 }
 
-/* 🔹 기본 페이지 버튼 스타일 */
+/*  기본 페이지 버튼 스타일 */
 .page-item a {
   background-color: transparent;
   border: none;
 }
 
-/* 🔹 활성화된 (현재 페이지) 버튼 스타일 - 검은색 */
+/* 활성화된 (현재 페이지) 버튼 스타일 - 검은색 */
 .page-item.active .page-link {
   background-color: black;
   color: white;
   font-weight: bold;
 }
 
-/* 🔹 두 번째 스타일 (연한 회색 배경) */
+/* 두 번째 스타일 (연한 회색 배경) */
 .pagination.light .page-item.active .page-link {
   background-color: lightgray;
   color: black;
 }
 
-/* 🔹 화살표 버튼 스타일 */
+/* 화살표 버튼 스타일 */
 .page-item a:hover {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 8px;
