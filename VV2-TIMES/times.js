@@ -153,18 +153,17 @@ const pagNationRender = () => {
   const firstPage = lastPage - (groupSize - 1) <=0? 1 : lastPage - (groupSize - 1)
 
   if (page > 1) {
-    pagiNationHTML = `<li class="page-item" onclick="moveToPage(1)"><a class="page-link" href="#"> &lt;&lt; </a></li>
-    <li class="page-item" onclick="moveToPage(${page - 1})"><a class="page-link" href="#">&lt;</a></li>`
+    pagiNationHTML += `<li class="page-item page-link" onclick="moveToPage(1)">&lt;&lt;</li>
+    <li class="page-item page-link" onclick="moveToPage(${page - 1})">&lt;</li>`;
   }
 
-
-  for(let i =firstPage; i <=lastPage; i++){
-    pagiNationHTML += `<li class="page-item ${i == page ? "active": ""}" onclick = "moveToPage(${i})"><a class="page-link" >${i}</a></li>`
+  for (let i = firstPage; i <= lastPage; i++) {
+    pagiNationHTML += `<li class="page-item page-link ${i == page ? "active" : ""}" onclick="moveToPage(${i})">${i}</li>`;
   }
 
   if (page < totalPages) {
-    pagiNationHTML += `<li class="page-item" onclick="moveToPage(${page + 1})"><a class="page-link" href="#"> &gt; </a></li>
-    <li class="page-item" onclick="moveToPage(${totalPages})"><a class="page-link" href="#"> &gt;&gt; </a></li>`
+    pagiNationHTML += `<li class="page-item page-link" onclick="moveToPage(${page + 1})">&gt;</li>
+    <li class="page-item page-link" onclick="moveToPage(${totalPages})">&gt;&gt;</li>`;
   }
 
 
